@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # Check input
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <org_name> <repo_file>"
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <repo_file>"
     exit 1
 fi
 
-ORG_NAME=$1
-REPO_FILE=$2
+REPO_FILE=$1
 
 if [ ! -f "$REPO_FILE" ]; then
     echo "File not found: $REPO_FILE"
@@ -38,7 +37,7 @@ do
     RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
         -X DELETE \
         -u "$USERNAME:$TOKEN" \
-        "https://api.github.com/repos/$ORG_NAME/$REPO")
+        "https://api.github.com/repos/$USERNAME/$REPO")
 
     if [ "$RESPONSE" -eq 204 ]; then
         echo "SUCCESS: Deleted $REPO"
