@@ -1,3 +1,0 @@
-docker_kubernetes.git
-cmd_fsf_sef.git
-alpha@repository.git
